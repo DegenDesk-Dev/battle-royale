@@ -9,7 +9,7 @@ const initialPlayers: Player[] = [
   { id: 5, name: "j5", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
   { id: 6, name: "j6", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
   { id: 7, name: "j7", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
-  { id: 8, name: "j8", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
+  { id: 8, name: "j8", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: false, killedBy: 3, points: 0, kills: 0 },
   { id: 9, name: "j9", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
   { id: 10, name: "j10", avatar: "https://imx.crosstheages.com/image/avatar-frame/avatar-frame-event-s2-2-1.png", isAlive: true, points: 0, kills: 0 },
 ]
@@ -24,7 +24,7 @@ export default function Root() {
             <th>Avatar</th>
             <th>Nom</th>
             <th>Statut</th>
-            <th>Nombre de points</th>
+            <th>Nb points</th>
             <th>Kills</th>
             <th>Tué par</th>
           </tr>
@@ -32,13 +32,14 @@ export default function Root() {
         <tbody>
           {initialPlayers.map((player) => (
             <tr key={player.id}>
-              <td>{player.avatar}</td>
+              <td><img src={player.avatar} alt={player.name} width="50" /></td>
               <td>{player.name}</td>
-              <td>{player.isAlive}</td>
+              <td>{player.isAlive ? 'Vivant' : 'Mort'}</td>
               <td>{player.points}</td>
               <td>{player.kills}</td>
-              <td>{player.killedBy}</td>
-            </tr>))}
+              <td>{player.killedBy ? 'Joueur ' + player.killedBy : "-"}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
